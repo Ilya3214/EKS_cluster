@@ -24,4 +24,4 @@ min_size         = 1
 specific_user_arn = ["arn:aws:iam::537479208195:user/ilya-admin"]
 
 # Role for GitHub CI
-gitHubActionsAppCIRoleDev     = "arn:aws:iam::537479208195:role/github_action_ci_dev"
+gitHubActionsAppCIRoleDev = "arn:aws:iam::537479208195:role/github_action_ci_dev"
