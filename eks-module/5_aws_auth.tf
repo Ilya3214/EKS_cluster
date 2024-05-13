@@ -32,16 +32,6 @@ resource "kubernetes_config_map" "aws_auth" {
         groups   = ["system:masters"]
         rolearn  = var.gitHubActionsAppCIRoleDev
         username = "GitHubActionsRoleUserDev"
-      },
-      {
-        groups   = ["system:masters"]
-        rolearn  = var.gitHubActionsAppCIRoleStaging
-        username = "GitHubActionsRoleUserStaging"
-      },
-      {
-        groups   = ["system:masters"]
-        rolearn  = var.gitHubActionsAppCIRoleProd
-        username = "GitHubActionsRoleUserProd"
       }
     ])
   }
