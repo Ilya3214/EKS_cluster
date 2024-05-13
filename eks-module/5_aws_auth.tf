@@ -27,6 +27,21 @@ resource "kubernetes_config_map" "aws_auth" {
         groups   = ["system:masters"]
         rolearn  = "arn:aws:iam::${local.account}:role/${var.administrator_role_name}"
         username = "${var.administrator_role_name}User"
+      },
+      {
+        groups   = ["system:masters"]
+        rolearn  = var.gitHubActionsAppCIRoleDev
+        username = "GitHubActionsRoleUserDev"
+      },
+      {
+        groups   = ["system:masters"]
+        rolearn  = var.gitHubActionsAppCIRoleStaging
+        username = "GitHubActionsRoleUserStaging"
+      },
+      {
+        groups   = ["system:masters"]
+        rolearn  = var.gitHubActionsAppCIRoleProd
+        username = "GitHubActionsRoleUserProd"
       }
     ])
   }

@@ -72,3 +72,18 @@ variable "worker_role_policy_arns" {
     "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
   ]
 }
+
+variable "gitHubActionsAppCIRoleDev" {
+  description = "Dev role that allow to GitHub actions to create resources inside k8s"
+  type        = string
+}
+
+variable "gitHubActionsAppCIRoleStaging" {
+  description = "Staging role that allow to GitHub actions to create resources inside k8s"
+  type        = string
+}
+
+variable "gitHubActionsAppCIRoleProd" {
+  description = "Prod role that allow to GitHub actions to create resources inside k8s"
+  type        = string
+}

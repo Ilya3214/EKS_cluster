@@ -84,3 +84,33 @@ variable "worker_role_policy_arns" {
     "arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly"
   ]
 }
+
+# For IAM module
+variable "admin_role_policy_arn_to_eks_cluster" {
+  description = "Admin policy for the Admin role to the cluster"
+  type        = list(string)
+  default = [
+    "arn:aws:iam::aws:policy/AdministratorAccess"
+  ]
+}
+
+variable "specific_user_arn" {
+  description = "Add permissions to the specific users"
+  type        = list(string)
+}
+
+# GitHub Actions Role
+variable "gitHubActionsAppCIRoleDev" {
+  description = "Dev role that allow to GitHub actions to create resources inside k8s"
+  type        = string
+}
+
+variable "gitHubActionsAppCIRoleStaging" {
+  description = "Staging role that allow to GitHub actions to create resources inside k8s"
+  type        = string
+}
+
+variable "gitHubActionsAppCIRoleProd" {
+  description = "Prod role that allow to GitHub actions to create resources inside k8s"
+  type        = string
+}

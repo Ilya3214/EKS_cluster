@@ -140,6 +140,16 @@ resource "aws_security_group_rule" "node_ingress_cluster_others_aws_security_gro
   protocol                 = "tcp"
   source_security_group_id = aws_security_group.eks_sg.id
 }
+## Additional cluster permissions for the nodes
+resource "aws_security_group_rule" "node_ingress_cluster_application_http" {
+  type              = "ingress"
+  description       = "Allow the client to application have HTTP access"
+  security_group_id = aws_security_group.eks_nodes_sg.id
+  from_port         = 80
+  to_port           = 80
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+}
 
 #resource "aws_security_group" "eks_nodes_sg" {
 #  name   = "${var.cluster_name}-eks-worker-sg"

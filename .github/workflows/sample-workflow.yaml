@@ -1,0 +1,55 @@
+name: Deploy terraform infrastructure
+
+on:
+  push:
+    branches: [ "dev", "staging", "main" ]
+
+permissions:
+  id-token: write
+  contents: read
+env:
+  AWS_REGION: "us-east-1"
+  ENVIRONMENT_STAGE: ${{ (github.ref == 'refs/heads/main' && 'prod') || (github.ref == 'refs/heads/staging' && 'staging') || 'dev' }}
+
+jobs:
+  deploy-terraform:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./root/project-x/
+        shell: bash
+
+    environment: ${{ (github.ref == 'refs/heads/main' && 'prod') || (github.ref == 'refs/heads/staging' && 'staging') || 'dev' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ vars.IAM_ROLE }}
+          role-session-name: GitHubActionRoleSession
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Run a one-line script
+        run: echo "Hello, world!"
+
+      - name: Run a multi-line script
+        run: |
+          echo "Add other actions to build,"
+          aws sts get-caller-identity
+
+      - name: Terraform init
+        run: terraform init -backend-config="bucket=project-x-stat-bucket-ilya-${ENVIRONMENT_STAGE}" -backend-config="key=eks-cluster-${ENVIRONMENT_STAGE}/terraform.tfstate" -backend-config="region=${AWS_REGION}" -backend-config="dynamodb_table=terraform-dynamodb-lock-table-${ENVIRONMENT_STAGE}"
+
+      - name: Terraform Format
+        run: terraform fmt -check
+
+      - name: Terraform Plan
+        run: terraform plan -input=false -var-file="${ENVIRONMENT_STAGE}.tfvars"
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve -input=false -var-file=${ENVIRONMENT_STAGE}.tfvars
+
+      # - name: Terraform Destroy
+      #   run: terraform destroy -auto-approve -input=false -var-file=${ENVIRONMENT_STAGE}.tfvars
