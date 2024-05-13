@@ -24,7 +24,7 @@ module "eks-cluster" {
   k8s_service_cidr = var.k8s_service_cidr
 
   # Worker
-  desired_capacity = 2
+  desired_capacity = var.desired_capacity
   instance_type    = var.instance_type
   max_size         = var.max_size
   min_size         = var.min_size
