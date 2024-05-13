@@ -41,7 +41,7 @@ resource "aws_launch_template" "eks_nodes_lt" {
 }
 
 resource "aws_autoscaling_group" "eks_asg" {
-  desired_capacity    = 3
+  desired_capacity    = var.desired_capacity
   desired_capacity_type = "units"
   max_size            = var.max_size
   min_size            = var.min_size
