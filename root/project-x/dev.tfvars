@@ -15,7 +15,7 @@ cluster_version  = "1.28"
 k8s_service_cidr = "10.51.0.0/16"
 
 # Worker
-desired_capacity = 3
+desired_capacity = 2
 instance_type    = "t3.medium"
 max_size         = 3
 min_size         = 1
