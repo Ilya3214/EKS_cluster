@@ -32,12 +32,14 @@ resource "kubernetes_config_map" "aws_auth" {
         groups   = ["system:masters"]
         rolearn  = var.gitHubActionsAppCIRoleDev
         username = "GitHubActionsRoleUserDev"
-      },
+      }
+    ]),
+    mapUsers = yamlencode([
       {
-        groups   = ["system:bootstrappers", "system:nodes"]
-        rolearn  = "arn:aws:iam::537479208195:role/easy-dev-eks-worker-role"
-        username = "system:node:{{EC2PrivateDNSName}}"
-      },
+        userarn  = "arn:aws:iam::${local.account}:user/${var.admin_user}"
+        username = "admin"
+        groups   = ["system:masters"]
+      }
     ])
   }
 }
