@@ -91,16 +91,16 @@
 #   }
 # }
 
-# resource "aws_security_group" "eks_nodes_sg" {
-#   name        = "${var.cluster_name}-eks-worker-sg"
-#   description = "Security group for all nodes in the cluster"
-#   vpc_id      = var.vpc_id
+resource "aws_security_group" "eks_nodes_sg" {
+  name        = "${var.cluster_name}-eks-worker-sg"
+  description = "Security group for all nodes in the cluster"
+  vpc_id      = var.vpc_id
 
-#   tags = {
-#     Name                                                        = "${var.cluster_name}-worker-node-sg"
-#     "kubernetes.io/cluster/${aws_eks_cluster.eks_cluster.name}" = "owned"
-#   }
-# }
+  tags = {
+    Name                                                        = "${var.cluster_name}-worker-node-sg"
+    "kubernetes.io/cluster/${aws_eks_cluster.eks_cluster.name}" = "owned"
+  }
+}
 
 resource "aws_security_group_rule" "eks_node_egress" {
   type              = "egress"
