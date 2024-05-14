@@ -13,7 +13,7 @@ resource "aws_eks_node_group" "eks_node_group" {
   instance_types = [var.instance_type]
 
   remote_access {
-    ec2_ssh_key = "linuxkey.pem"
+    ec2_ssh_key = "linuxkey"
   }
 
   tags = {
