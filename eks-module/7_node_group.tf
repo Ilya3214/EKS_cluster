@@ -20,7 +20,7 @@ resource "aws_eks_node_group" "eks_node_group" {
     "Name" = "${var.cluster_name}-node-group"
 
   instance_tags = {
-    "Name" = format("%s-node-%d", var.cluster_name, count.index + 1)
+    "Name" = "${var.cluster_name}-node"
   }
 
   }
