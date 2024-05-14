@@ -119,6 +119,11 @@
 
 #########
 
+variable "administrator_role_name" {
+  description = "The name of the IAM role for the administrator."
+  type        = string
+}
+
 # VPC module
 variable "cluster_name" {
   description = "The name of a project"

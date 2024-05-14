@@ -19,7 +19,7 @@ desired_capacity = 2
 instance_type    = "t3.medium"
 max_size         = 3
 min_size         = 1
-
+ec2_ssh_key_name = "linuxkey.pem"
 # IAM role for EKS cluster
 specific_user_arn = ["arn:aws:iam::537479208195:user/ilya-admin"]
 
