@@ -43,11 +43,7 @@
 
 
 
-########
-
-provider "aws" {
-  region = var.region
-}
+#############     Config for node group     #############
 
 module "vpc" {
   source              = "../../vpc-module"
