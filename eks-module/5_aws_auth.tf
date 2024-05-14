@@ -36,7 +36,7 @@ resource "kubernetes_config_map" "aws_auth" {
     ]),
     mapUsers = yamlencode([
       {
-        userarn  = "arn:aws:iam::537479208195:user/root"
+        userarn  = "arn:aws:iam::537479208195:user/ilya-admin"
         username = "admin"
         groups   = ["system:masters"]
       }
