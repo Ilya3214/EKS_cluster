@@ -78,15 +78,15 @@ variable "gitHubActionsAppCIRoleDev" {
   type        = string
 }
 
-variable "gitHubActionsAppCIRoleStaging" {
-  description = "Staging role that allow to GitHub actions to create resources inside k8s"
-  type        = string
-}
+# variable "gitHubActionsAppCIRoleStaging" {
+#   description = "Staging role that allow to GitHub actions to create resources inside k8s"
+#   type        = string
+# }
 
-variable "gitHubActionsAppCIRoleProd" {
-  description = "Prod role that allow to GitHub actions to create resources inside k8s"
-  type        = string
-}
+# variable "gitHubActionsAppCIRoleProd" {
+#   description = "Prod role that allow to GitHub actions to create resources inside k8s"
+#   type        = string
+# }
 
 
 
