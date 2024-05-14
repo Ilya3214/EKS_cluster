@@ -28,6 +28,7 @@ module "eks-cluster" {
   instance_type    = var.instance_type
   max_size         = var.max_size
   min_size         = var.min_size
+  ec2_ssh_key_name = var.ec2_ssh_key_name
 
   # Role for GitHub CI
   gitHubActionsAppCIRoleDev     = var.gitHubActionsAppCIRoleDev
