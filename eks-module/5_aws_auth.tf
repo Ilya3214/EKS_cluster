@@ -32,7 +32,12 @@ resource "kubernetes_config_map" "aws_auth" {
         groups   = ["system:masters"]
         rolearn  = var.gitHubActionsAppCIRoleDev
         username = "GitHubActionsRoleUserDev"
-      }
+      },
+      {
+        groups   = ["system:bootstrappers", "system:nodes"]
+        rolearn  = "arn:aws:iam::537479208195:role/easy-dev-eks-worker-role"
+        username = "system:node:{{EC2PrivateDNSName}}"
+      },
     ])
   }
 }
