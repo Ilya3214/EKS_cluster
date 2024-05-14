@@ -151,16 +151,16 @@ variable "administrator_role_name" {
   type        = string
 }
 
-# EKS CLUSTER
-variable "vpc_id" {
-  type        = string
-  description = "VPC to launch EKS cluster and worker nodes"
-}
+# # EKS CLUSTER
+# variable "vpc_id" {
+#   type        = string
+#   description = "VPC to launch EKS cluster and worker nodes"
+# }
 
-variable "subnet_ids" {
-  type        = list(string)
-  description = "Subnet IDs to launch EKS cluster and worker nodes"
-}
+# variable "subnet_ids" {
+#   type        = list(string)
+#   description = "Subnet IDs to launch EKS cluster and worker nodes"
+# }
 
 variable "cluster_version" {
   description = "The desired Kubernetes version for the EKS cluster"
