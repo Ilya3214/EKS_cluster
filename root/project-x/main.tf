@@ -31,8 +31,6 @@ module "eks-cluster" {
 
   # Role for GitHub CI
   gitHubActionsAppCIRoleDev     = var.gitHubActionsAppCIRoleDev
-
-
 }
 
 module "iam_roles" {
