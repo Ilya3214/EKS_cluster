@@ -68,3 +68,4 @@ jobs:
       - name: Terraform Apply or Destroy
         if: env.action == 'destroy'
         run: terraform destroy -auto-approve -input=false -var-file="${ENVIRONMENT_STAGE}.tfvars"
+ 
